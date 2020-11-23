@@ -26,8 +26,10 @@ value = input("Введите число с точкой: ")
 try:
     value = float(value)
     print(value ** -1)
-except:
-    print("Ошибка")
+except ZeroDivisionError:
+    print("Ошибка деление на 0")
+except ValueError:
+    print("Это совсем не число")
 ############################################################################
 # 5)
 my_list = [0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
