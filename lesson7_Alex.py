@@ -1,24 +1,24 @@
 # 1)
-import random
+from random import randint  # загрузил не весь модуль, а только нужный randint
 print("1)")
 my_list = []
 for index in range(20):
-    my_list.append(random.randint(1,100))
+    my_list.append(randint(1,100))
 print(my_list)
 ##########################################################
 # 2)
 print("2)")
 def randomize():
-    rand_ = (random.randint(-10, 10), random.randint(-10,10))
-    return rand_
+    return (randint(-10, 10), randint(-10,10))
+    # объединил две строки 12 и 13 в одну
 triangle = {"A":randomize(), "B":randomize(), "C":randomize()}
 print(triangle)
 ##########################################################
 # 3)
 print("3)")
 def my_print():
-    new_str = "***" + my_str + "***"
-    return new_str
+    return f"***{my_str}***"
+    # объединил две строки 20 и 21 в одну и сделал через f-строку
 my_str = "I am the string"
 print(my_print())
 ##########################################################
@@ -26,13 +26,12 @@ print(my_print())
 print("4)")
 persons = [{"name": "John", "age": 16},
            {"name": "Jack", "age": 15},
-           {"name": "Tom", "age": 45},
+           {"name": "Tomiiii", "age": 16},
            {"name": "Axe", "age": 15}]
-name_list_a = []
-name_list_b = []
+name_list_a = ["I"]
+name_list_b = ["I"]
 age_list = [200]
 sum_age = 0
-name_list_a.append("I")
 for index in range(len(persons)):
     if persons[index]['age'] < age_list[0]:
         age_list.pop()
@@ -41,22 +40,19 @@ for index in range(len(persons)):
         name_list_a.append(persons[index]['name'])
     elif persons[index]['age'] == age_list[0]:
         name_list_a.append(persons[index]['name'])
-print("a) Самые молодые люди:", name_list_a)
-name_list_b.append("I")
-for index in range(len(persons)):
     if len(persons[index]['name']) > len(name_list_b[0]):
         name_list_b.pop()
         name_list_b.append(persons[index]['name'])
     elif len(persons[index]['name']) == len(name_list_b[0]):
         name_list_b.append(persons[index]['name'])
-print("b) Самые длинное имя:", name_list_b)
-for index in range(len(persons)):
     sum_age += persons[index]['age']
+print("a) Самые молодые люди:", name_list_a)
+print("b) Самые длинное имя:", name_list_b)
 print("c) Среднее количество лет:", sum_age / len(persons))
 ###############################################################
 # 5)
 print("5)")
-my_dict_1 = {"A": 100, "B": 150, "D": 200, "G": 500}
+my_dict_1 = {"A": 100, "B": 150, "D": 200, "E": 500}
 my_dict_2 = {"D": 250, "E": 300, "B": 350, "F": 400}
 my_list_a = []
 my_list_b = []
