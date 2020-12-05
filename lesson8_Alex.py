@@ -1,7 +1,7 @@
 # 1)
 import os
-import string
-import random
+from string import ascii_lowercase
+from random import randint
 print("1)")
 def create_domains_list():
     with open ("domains.txt", 'r') as file:
@@ -36,14 +36,17 @@ def create_email():
         data_1 = []
         for line in file.readlines():
             data_1.append(line.split()[1])
-    my_symbol = ""
-    rand_surname = random.randint(0,len(data_1))
-    rand_number = random.randint(100,999)
-    alphabet = string.ascii_lowercase
-    for index in range(random.randint(5,7)):
-        rand_symbol = random.randint(0,24)
-        symbol = alphabet[rand_symbol:rand_symbol + 1]
-        my_symbol += symbol
-    rand_domain = random.randint(0,len(data))
-    print(f"{data_1[rand_surname]}.{rand_number}@{my_symbol}{data[rand_domain]}")
+    try:
+        my_symbol = ""
+        rand_surname = randint(0,len(data_1))
+        rand_number = randint(100,999)
+        alphabet = ascii_lowercase
+        for index in range(randint(5,7)):
+            rand_symbol = randint(0,24)
+            symbol = alphabet[rand_symbol:rand_symbol + 1]
+            my_symbol += symbol
+        rand_domain = randint(0,len(data))
+        print(f"{data_1[rand_surname]}.{rand_number}@{my_symbol}{data[rand_domain]}")
+    except:
+        pass
 create_email()
