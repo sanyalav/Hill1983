@@ -42,7 +42,7 @@ def create_email():
         rand_number = randint(100,999)
         alphabet = ascii_lowercase
         for index in range(randint(5,7)):
-            rand_symbol = randint(0,24)
+            rand_symbol = randint(0,25)
             symbol = alphabet[rand_symbol:rand_symbol + 1]
             my_symbol += symbol
         rand_domain = randint(0,len(data))
