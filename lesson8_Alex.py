@@ -1,6 +1,5 @@
 # 1)
 import os
-from string import ascii_lowercase
 from random import randint
 print("1)")
 def create_domains_list():
@@ -40,11 +39,9 @@ def create_email():
         my_symbol = ""
         rand_surname = randint(0,len(data_1))
         rand_number = randint(100,999)
-        alphabet = ascii_lowercase
-        for index in range(randint(5,7)):
-            rand_symbol = randint(0,25)
-            symbol = alphabet[rand_symbol:rand_symbol + 1]
-            my_symbol += symbol
+        for symbol in range(randint(5, 7)):
+            rand_symbol = chr(randint(97, 122))
+            my_symbol += rand_symbol
         rand_domain = randint(0,len(data))
         print(f"{data_1[rand_surname]}.{rand_number}@{my_symbol}{data[rand_domain]}")
     except:
