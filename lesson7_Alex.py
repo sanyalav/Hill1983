@@ -1,5 +1,5 @@
 # 1)
-from random import randint  # загрузил не весь модуль, а только нужный randint
+from random import randint
 print("1)")
 my_list = []
 for index in range(20):
@@ -10,7 +10,6 @@ print(my_list)
 print("2)")
 def randomize():
     return (randint(-10, 10), randint(-10,10))
-    # объединил две строки 12 и 13 в одну
 triangle = {"A":randomize(), "B":randomize(), "C":randomize()}
 print(triangle)
 ##########################################################
@@ -18,82 +17,46 @@ print(triangle)
 print("3)")
 def my_print():
     return f"***{my_str}***"
-    # объединил две строки 20 и 21 в одну и сделал через f-строку
 my_str = "I am the string"
 print(my_print())
 ##########################################################
 # 4)
 print("4)")
-persons = [{"name": "John", "age": 16},
+persons = [{"name": "John", "age": 35},
            {"name": "Jack", "age": 15},
-           {"name": "Tomiiii", "age": 16},
+           {"name": "Tom", "age": 16},
            {"name": "Axe", "age": 15}]
-name_list_a = ["I"]
-name_list_b = ["I"]
-age_list = [200]
+min_age_list = []
+min_age = min(person["age"] for person in persons)
+[min_age_list.append(person["name"]) for person in persons if person["age"] == min_age]
+print("Самые молодые люди:", min_age_list)
+longest_name_list = []
+longest_name = max(len(person["name"]) for person in persons)
+[longest_name_list.append(person["name"]) for person in persons if len(person["name"]) == longest_name]
+print("Самое длинное имя:", longest_name_list)
 sum_age = 0
-for index in range(len(persons)):
-    if persons[index]['age'] < age_list[0]:
-        age_list.pop()
-        name_list_a.pop()
-        age_list.append(persons[index]['age'])
-        name_list_a.append(persons[index]['name'])
-    elif persons[index]['age'] == age_list[0]:
-        name_list_a.append(persons[index]['name'])
-    if len(persons[index]['name']) > len(name_list_b[0]):
-        name_list_b.pop()
-        name_list_b.append(persons[index]['name'])
-    elif len(persons[index]['name']) == len(name_list_b[0]):
-        name_list_b.append(persons[index]['name'])
-    sum_age += persons[index]['age']
-print("a) Самые молодые люди:", name_list_a)
-print("b) Самые длинное имя:", name_list_b)
-print("c) Среднее количество лет:", sum_age / len(persons))
-###############################################################
+for person in persons:
+    age = person.get("age")
+    sum_age += age
+print(f"Средний возраст людей: {sum_age/len(persons)} лет")
+###########################################################
 # 5)
 print("5)")
-my_dict_1 = {"A": 100, "B": 150, "D": 200, "E": 500}
-my_dict_2 = {"D": 250, "E": 300, "B": 350, "F": 400}
-my_list_a = []
-my_list_b = []
-my_list_c = []
-new_dict = {}
-my_dict_3 = {}
-my_dict_4 = {}
-x = -2    # Это счетчики, чтобы взять срез списка из двух значений [0,2]..[2,4] и т.д
-z = 0     #
-my_list_1 = list(my_dict_1)
-my_list_2 = list(my_dict_2)
-for index_1 in range(len(my_list_1)):
-   for index_2 in range(len(my_list_2)):
-       if my_list_1[index_1] == my_list_2[index_2]:
-           my_list_a.append(my_list_1[index_1])
-           a1 = my_dict_1.get(my_list_1[index_1])
-           b1 = my_dict_2.get(my_list_2[index_2])
-           c1 = my_list_1[index_1]
-           my_list_c.append(a1)
-           my_list_c.append(b1)
-           x += 2    # Счетчики для среза
-           z += 2    #
-           d1 = {c1:my_list_c[x:z]}   # Здесь срез
-           my_dict_4.update(d1)
-print(my_list_a)
-print(my_list_c)
-print(my_dict_4)
-for index in range(len(my_list_1)):
-    if my_list_1[index] not in my_list_2:
-        my_list_b.append(my_list_1[index])
-print(my_list_b)
-for index in range(len(my_list_b)):
-    if my_list_b[index] in my_dict_1:
-        a = my_list_b[index]
-        b = my_dict_1.get(my_list_b[index])
-        c = {a:b}
-        new_dict.update(c)
-print(new_dict)
-my_dict_3.update(my_dict_1)
-my_dict_3.update(my_dict_2)
-my_dict_3.update(my_dict_4)
+my_dict_1 = {"A": 10, "B": 15, "C": 20, "D": 25}
+my_dict_2 = {"E": 30, "B": 35, "F": 40, "C": 45}
+same_keys = list(set(my_dict_1.keys()).intersection(my_dict_2.keys()))
+print("Список общих ключей:", same_keys)
+diff_keys = list(set(my_dict_1.keys()).difference(my_dict_2.keys()))
+print("Список ключей, которые есть в первом списке, но нет во втором:", diff_keys)
+new_dict = {key: my_dict_1[key] for key in diff_keys}
+print("Новый словарь:", new_dict)
+my_dict_3 = list(my_dict_1.keys() ^ my_dict_2.keys())
 print(my_dict_3)
-
-
+new_dict_1 = {key: value for key, value in my_dict_1.items() if key in my_dict_3}
+print(new_dict_1)
+new_dict_2 = {key: value for key, value in my_dict_2.items() if key in my_dict_3}
+print(new_dict_2)
+same_keys_dict = {key: [my_dict_1[key], my_dict_2[key]] for key in same_keys}
+print(same_keys_dict)
+merge_dict = {**new_dict_1, **new_dict_2, **same_keys_dict}
+print("Объединенный список:", merge_dict)
