@@ -30,15 +30,15 @@ print(surnames_list)
 print("3)")
 def create_email():
     my_symbol = ""
-    rand_surname = randint(0, len(surnames_list))    # surnames_list это переменная равная вызову 2й функции
+    rand_surname = randint(0, len(surnames_list) - 1)    # surnames_list это переменная равная вызову 2й функции
     rand_number = randint(100, 999)
     for symbol in range(randint(5, 7)):
         rand_symbol = chr(randint(97, 122))
         my_symbol += rand_symbol
-    rand_domain = randint(0, len(domains_list))    # domains_list это переменная равная вызову 1й функции
-    my_email = f"{surnames_list[rand_surname - 1]}.{rand_number}@{my_symbol}.{domains_list[rand_domain - 1]}"
+    rand_domain = randint(0, len(domains_list) - 1)    # domains_list это переменная равная вызову 1й функции
+    my_email = f"{surnames_list[rand_surname]}.{rand_number}@{my_symbol}.{domains_list[rand_domain]}"
     # try и except были так как выпадала иногда ошибка.
-    # Я ее нашел (в строке 39 надо было поставить -1 после rand_surname и rand_domain). Теперь все работает
+    # Я ее нашел (в строке 33 и 38 надо было поставить -1 после surnames_list и domains_list). Теперь все работает
     return my_email
 result = create_email()
 print(result)
