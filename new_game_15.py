@@ -98,6 +98,7 @@ draw_15_table(my_15)                               # Эту строку я по
 root.update_idletasks()                            # Это я добавил, так как без него не работает изменение размера
 w, h = root.winfo_width(), root.winfo_height()     # Эта строка берет размеры root
 root.geometry("%dx%d+0+0" % (w, h))                # Из размеров root делает размеры игрового поля
+root.resizable(False, False)                       # Если это добавить, то размеры окна нельзя будет в ручную менять
 root.configure(background='black')
 root.bind("<Left>", left)
 root.bind("<Right>", right)
