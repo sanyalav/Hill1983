@@ -6,6 +6,7 @@ class My15:
     def __init__(self, size):
         self.my_15 = self._generate_15()
         self.row, self.col = self.get_space()
+        self.size = size     # Добавил эту строку, хотя все работало и без нее
 
     def _generate_15(self):
         my_15 = []
@@ -89,7 +90,7 @@ def down(event):
     draw_15_table(my_15)
 
 
-size = 5
+size = 5     # В этой строке меняю число на нужное кол-во строк и столбцов и все работает
 my_15 = My15(size=size)
 my_15.print_15()
 root = Tk()
