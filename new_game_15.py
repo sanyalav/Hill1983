@@ -4,16 +4,17 @@ from tkinter import *
 
 class My15:
     def __init__(self, size):
+        self.size = size
         self.my_15 = self._generate_15()
         self.row, self.col = self.get_space()
-        self.size = size     # Добавил эту строку, хотя все работало и без нее
+
 
     def _generate_15(self):
         my_15 = []
-        all_values = [str(i) for i in range(1, size ** 2)] + [""]
+        all_values = [str(i) for i in range(1, self.size ** 2)] + [""]
         random.shuffle(all_values)
-        for row_number in range(size):
-            my_15.append(all_values[size * row_number: size * (row_number + 1)])
+        for row_number in range(self.size):
+            my_15.append(all_values[self.size * row_number: self.size * (row_number + 1)])
         return my_15
 
     def print_15(self):
@@ -33,7 +34,7 @@ class My15:
         return row_, col_
 
     def move_down(self):
-        if self.row == size - 1:
+        if self.row == self.size - 1:
             return
         self.my_15[self.row][self.col], self.my_15[self.row + 1][self.col] = self.my_15[self.row + 1][self.col], \
                                                                              self.my_15[self.row][self.col]
@@ -47,7 +48,7 @@ class My15:
         self.row -= 1
 
     def move_right(self):
-        if self.col == size - 1:
+        if self.col == self.size - 1:
             return
         self.my_15[self.row][self.col], self.my_15[self.row][self.col + 1] = self.my_15[self.row][self.col + 1], \
                                                                              self.my_15[self.row][self.col]
@@ -90,7 +91,7 @@ def down(event):
     draw_15_table(my_15)
 
 
-size = 5     # В этой строке меняю число на нужное кол-во строк и столбцов и все работает
+size = 5
 my_15 = My15(size=size)
 my_15.print_15()
 root = Tk()
